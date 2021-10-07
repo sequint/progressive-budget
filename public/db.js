@@ -14,4 +14,21 @@ request.onsuccess = ({ target }) => {
   }
 }
 
+const checkDatabase = () => {
+  const budget = db.budget(['pending'], 'readwrite')
+  const store = budget.objectStore('pending')
+  const getAll = store.getAll()
+
+  getAll.onsuccess = () => {
+    if (getAll.result.length > 0) {
+      axios.post('/api/transaction/bulk', getAll.result)
+        .then(() => {
+          const budget = db.budget(['pending'], 'readwrite')
+          const store = budget.objectStore('pending')
+          store.clear()
+        })
+    }
+  }
+}
+
 window.addEventListener('online', checkDatabase)
