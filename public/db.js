@@ -14,6 +14,12 @@ request.onsuccess = ({ target }) => {
   }
 }
 
+const saveRecord = record => {
+  const budget = db.budget(['pending'], 'readwrite')
+  const store = budget.objectStore('pending')
+  store.add(record)
+}
+
 const checkDatabase = () => {
   const budget = db.budget(['pending'], 'readwrite')
   const store = budget.objectStore('pending')
