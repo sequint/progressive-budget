@@ -27,6 +27,6 @@ app.use(require("./routes/api.js"));
 //   console.log(`App running on port ${PORT}!`);
 // });
 
-syncDB()
+syncDB({})
   .then(() => app.listen(process.env.PORT || 3000))
   .catch(err => console.log(err))
