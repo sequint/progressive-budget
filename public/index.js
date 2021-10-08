@@ -5,20 +5,23 @@ if ('serviceWorker' in navigator) {
   })
 }
 
-let transactions = [];
-let myChart;
+let transactions = []
+console.log(transactions)
+
+let myChart
 
 fetch("/api/transaction")
   .then(response => {
-    return response.json();
+    return response.json()
   })
   .then(data => {
     // save db data on global variable
-    transactions = data;
+    transactions = data
+    console.log(transactions)
 
-    populateTotal();
-    populateTable();
-    populateChart();
+    populateTotal()
+    populateTable()
+    populateChart()
   });
 
 function populateTotal() {
@@ -110,9 +113,10 @@ function sendTransaction(isAdding) {
   if (!isAdding) {
     transaction.value *= -1;
   }
-
+  
+  console.log(transactions)
   // add to beginning of current array of data
-  transactions.unshift(transaction);
+  transactions.unshift(transaction)
 
   // re-run logic to populate ui with new record
   populateChart();
@@ -152,9 +156,10 @@ function sendTransaction(isAdding) {
 }
 
 document.querySelector("#add-btn").onclick = function() {
+  console.log(transactions)
   sendTransaction(true);
-};
+}
 
 document.querySelector("#sub-btn").onclick = function() {
-  sendTransaction(false);
-};
+  sendTransaction(false)
+}
