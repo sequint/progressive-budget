@@ -4,7 +4,6 @@ const Transaction = require("../models/transaction.js")
 router.post("/api/transaction", (req, res) => {
   Transaction.create(req.body)
     .then(dbTransaction => {
-      console.log(dbTransaction)
       res.json(dbTransaction)
     })
     .catch(err => {
@@ -23,7 +22,7 @@ router.post("/api/transaction/bulk", (req, res) => {
 });
 
 router.get("/api/transaction", (req, res) => {
-  Transaction.find({}).sort({date: -1})
+  Transaction.findAll().sort({date: -1})
     .then(dbTransaction => {
       res.json(dbTransaction)
     })
