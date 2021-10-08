@@ -3,7 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
-const syncDB = require('./db')
+const syncDB = require('./db/index')
 
 const app = express();
 
