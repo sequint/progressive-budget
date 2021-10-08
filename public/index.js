@@ -16,6 +16,7 @@ fetch("/api/transaction")
   })
   .then(data => {
     // save db data on global variable
+    console.log(data)
     transactions = data
     console.log(transactions)
 
