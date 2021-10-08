@@ -17,13 +17,16 @@ fetch("/api/transaction")
   .then(data => {
     // save db data on global variable
     console.log(data)
-    transactions = data
+    if (data) {
+      transactions = data
     console.log(transactions)
+    }
+    
 
     populateTotal()
     populateTable()
     populateChart()
-  });
+  })
 
 function populateTotal() {
   // reduce transaction amounts to a single total value
