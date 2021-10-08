@@ -1,9 +1,11 @@
+require('dotenv').config()
+
 const express = require("express");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
-const syncDB = require('./db/index')
+const syncDB = require('./db')
 
 const app = express();
 
