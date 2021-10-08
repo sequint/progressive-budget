@@ -28,13 +28,7 @@ const checkDatabase = () => {
 
   getAll.onsuccess = () => {
     if (getAll.result.length > 0) {
-      axios.post('/api/transaction/bulk', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(getAll.result)
-      })
+      axios.post('/api/transaction/bulk')
         .then(() => {
           const transaction = db.transaction(['pending'], 'readwrite')
           const store = transaction.objectStore('pending')
